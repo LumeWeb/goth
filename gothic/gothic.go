@@ -315,7 +315,7 @@ func GetContextWithProvider(req *http.Request, provider string) *http.Request {
 
 // StoreInSession stores a specified key/value pair in the session.
 func StoreInSession(key string, value string, req *http.Request, res http.ResponseWriter) error {
-	session, _ := Store.New(req, SessionName)
+	session, _ := Store.Get(req, SessionName)
 
 	if err := updateSessionValue(session, key, value); err != nil {
 		return err
